@@ -1,0 +1,8 @@
+# or use ifnull
+# or use max, cuz it will automatically return null if not exist
+
+select(
+    select distinct salary
+    from employee
+    order by salary desc
+    limit 1,1) as secondhighestsalary;
