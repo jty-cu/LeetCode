@@ -1,0 +1,11 @@
+# solution
+
+select avg(number) as median
+from(
+    select number,frequency,
+        sum(frequency) over(order by number) as upper,
+        sum(frequency) over(order by number desc) lower,
+        sum(frequency) over()/2 as half
+    from numbers
+) t
+where upper>=half and lower>=half;
