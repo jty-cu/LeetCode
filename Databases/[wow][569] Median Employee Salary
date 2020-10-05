@@ -1,0 +1,37 @@
+# solution 1
+
+# 排序法
+# 同时记录even_mid和odd_mid
+# 判断长度是even or odd
+# where clause来判断长度和选择相应的中位数
+
+select t.id,t.company,t.salary
+from
+(
+    select id,company,salary,
+            count(1) over(partition by company) cnt,
+            row_number() over(partition by company order by salary) rnk,
+            count(1) over(partition by company)/2 even_mid,
+            ceil(count(1) over(partition by company)/2) odd_mid
+    from employee
+) t
+where (mod(cnt,2)=0 and rnk in (even_mid,even_mid+1)) or (mod(cnt,2)=1 and rnk=odd_mid)
+order by company;
+
+
+# solution 2 (COOL!)
+
+# 排序法
+# 利用公式：abs(rnk - (cnt+1)/2) < 1
+# dist(rank,median) <= 0.5 < 1
+
+select t.id,t.company,t.salary
+from
+(
+    select id,company,salary,
+            count(1) over(partition by company) cnt,
+            row_number() over(partition by company order by salary) rnk
+    from employee
+) t
+where abs(rnk-(cnt+1)/2)<1
+order by company;
