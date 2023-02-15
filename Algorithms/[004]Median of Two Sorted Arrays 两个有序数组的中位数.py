@@ -62,6 +62,3 @@ class Solution:
                 # 否则我们在两个值中间做个平均
                 return (maxleft + minright)/2
 
-作者：clay001
-链接：https://leetcode-cn.com/problems/median-of-two-sorted-arrays/solution/kan-wan-guan-fang-ti-jie-de-er-fen-dui-de-tu-zhi-h/
-来源：力扣（LeetCode）
