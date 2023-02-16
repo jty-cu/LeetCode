@@ -19,6 +19,7 @@ class Solution:
             left -= 1
             right += 1
         return left + 1, right - 1  ## 停止扩展，恢复到最后的回文串
+
     def longestPalindrome(self, s: str) -> str:
         if len(s) < 2:
             return s
