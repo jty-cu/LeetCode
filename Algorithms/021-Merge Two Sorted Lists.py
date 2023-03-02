@@ -33,7 +33,7 @@ class Solution:
         ## 递归
         ## 时间复杂度：O(m+n)，空间复杂度：O(m+n)
         '''
-        终止条件是什么
+        终止条件是什么(return的内容)
         如何判断时空复杂度
         '''
         if not list1: return list2
