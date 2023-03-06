@@ -7,6 +7,32 @@
 **3. cur_len的计数逻辑
 '''
 
+## 滑窗
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        window = dict()
+        left, right = 0, 0
+        ans = 0
+        while right < len(s):
+            c = s[right]
+            right += 1
+            ## 更新window
+            if c in window:
+                window[c] += 1
+            else:
+                window[c] = 1
+
+            ## if shrink
+            while window[c] > 1:
+                d = s[left]
+                left += 1
+                ## update window
+                window[d] -= 1
+            ans = max(ans, right - left)
+
+        return ans
+
+
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
         if not s:
