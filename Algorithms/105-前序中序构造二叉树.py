@@ -8,11 +8,12 @@ class Solution:
             if preleft > preright:
                 return None
             rootval = preorder[preleft]
-            index = 0
-            for i in range(inleft, inright+1):
-                if inorder[i] == rootval:
-                    index = i
-                    break
+            index = inorder.index(rootval)
+            # index = 0
+            # for i in range(inleft, inright+1):
+            #     if inorder[i] == rootval:
+            #         index = i
+            #         break
             ## 创建根节点
             root = TreeNode(rootval)
             ## 计算左子树中的节点数
