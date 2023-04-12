@@ -9,7 +9,7 @@ https://leetcode.cn/problems/reverse-linked-list/solution/dong-hua-yan-shi-206-f
 '''
 class Solution:
     def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        if not head or not head.next:
+        if not head or not head.next: ## 注意终止条件
             return head
         last = self.reverseList(head.next)
         head.next.next = head ## head节点和last的尾节点箭头交换
