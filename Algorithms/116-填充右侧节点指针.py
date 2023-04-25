@@ -17,3 +17,23 @@ class Solution:
 
         traverse(root.left, root.right)
         return root
+
+
+## 层序遍历
+class Solution(object):
+    def connect(self, root):
+        if not root:
+            return None
+        queue = list()
+        queue.append(root)
+        while queue:
+            k = len(queue)
+            for i in range(k):
+                cur = queue.pop(0)
+                if i < k-1:
+                    cur.next = queue[0]
+                else:
+                    cur.next = None
+                if cur.left: queue.append(cur.left)
+                if cur.right: queue.append(cur.right)
+        return root
