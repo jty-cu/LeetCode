@@ -1,32 +1,30 @@
-'''
-Floodfilled算法
-其他问题的变形：一般就是考虑
-(a)如何淹没多余的岛屿 【边界的岛屿、子岛屿】
-(b) 如何在dfs中统计不同的内容【岛屿个数、岛屿面积、岛屿形状】
-'''
-
-
 class Solution:
     def numIslands(self, grid: List[List[str]]) -> int:
-        def dfs(grid, i, j):
-            m, n = len(grid), len(grid[0])
-            ## 边界超出索引
-            if i < 0 or j < 0 or i >= m or j >= n:
-                return
-            ## 已经是海水
-            if grid[i][j] == "0":
-                return
-            grid[i][j] = "0"
-            ## 淹没上下左右的陆地 ** 重要 **
-            dfs(grid, i-1, j)
-            dfs(grid, i, j-1)
-            dfs(grid, i+1, j)
-            dfs(grid, i, j+1)
-        res = 0
         m, n = len(grid), len(grid[0])
+        res = 0
+        
+        ## dfs的作用是淹没岛屿，FloodFill算法
+        def dfs(i, j):
+            if i<0 or j<0 or i>=m or j>=n:
+                return 
+            if grid[i][j] == '0':
+                return 
+            ## 发现一个岛屿，淹没
+            grid[i][j] = '0'
+            dfs(i-1, j)
+            dfs(i+1, j)
+            dfs(i, j-1)
+            dfs(i, j+1)
+        
         for i in range(m):
             for j in range(n):
-                if grid[i][j] == "1":
+                if grid[i][j] == '1':
                     res += 1
-                dfs(grid, i, j)
+                    ## 然后淹没岛屿
+                    dfs(i, j)
+                # dfs(i, j) ##放这里可以跑过，但是这个意味着不管是不是陆地，我们每次都会淹没，但是实际上我们只要淹没岛屿，增加了时间复杂度
         return res
+
+
+
+

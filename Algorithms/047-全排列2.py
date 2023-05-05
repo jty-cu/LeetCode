@@ -15,7 +15,7 @@ class Solution:
             for i in range(len(nums)):
                 if used[i]:
                     continue
-                ## not used[i-1]是在维护2-2‘-2’‘的顺序，如果used[i-1]=False, 说明2还没有使用过就直接到了2‘,直接剪枝
+                ## not used[i-1]是在维护2-2'-2''的顺序，如果used[i-1]=False, 说明2还没有使用过就直接到了2',直接剪枝
                 if i > 0 and nums[i] == nums[i - 1] and not used[i - 1]:
                     continue
 

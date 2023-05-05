@@ -4,7 +4,7 @@ class Solution:
             nonlocal res
             if sum0 == target:
                 res.append(track[:])
-                return
+                return ## must return
             if sum0 > target:
                 return
             for i in range(start, len(candidates)):
