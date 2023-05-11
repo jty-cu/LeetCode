@@ -58,7 +58,7 @@ class Solution:
             if nums[left] <= nums[right]:  ## 此时数组没有被翻转
                 return nums[left]
             mid = left + (right - left) // 2
-            if nums[left] <= nums[mid]:
+            if nums[left] <= nums[mid]:  ## 说明区间 [left,mid] 连续递增，则最小元素一定不在这个区间里
                 left = mid + 1
             else:
                 right = mid  ##注意，mid可能是最小值
