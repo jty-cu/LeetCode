@@ -23,3 +23,6 @@ class Solution:
         for x in group.values():
             res.append(x)
         return res
+        ## return list(group.values())
+
+
